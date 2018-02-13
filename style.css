@@ -1,0 +1,97 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma;
+}
+body {
+    display: flex;
+    flex-direction: row;
+}
+#YMapsID {
+    width: 80% !important;
+    height: 100vh !important;
+}
+.games-section {
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.games-section h1 {
+    font-size: 1.35em;
+    text-align: center;
+}
+
+.user-input-form {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+#user-city-input {
+    width: 100%;
+    font-size: 1.2em;
+    padding: 5px;
+
+}
+
+#game-info {
+    margin-bottom: 10px;
+}
+
+#output {
+    display: flex;
+    flex-direction: column;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+
+.answer-user, .answer-computer {
+    display: block;
+    padding: 10px;    
+}
+.answer-user p, .answer-computer p {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.address-line {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.answer-user {
+    border-left: 5px solid orange;
+}
+
+.answer-computer {
+    border-left: 5px solid blue;
+}
+
+@media screen and (max-width: 1024px) {
+    .games-section {
+        width: 40%;
+    }
+    #YMapsID {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+    .games-section {
+        width: 100%;
+        height: 40vh;
+    }
+    #YMapsId {
+        width: 100%;
+        height: 60vh;
+    }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goroda game</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript" src="map.js"></script>
+</head>
+<body>
+<div class="games-section">
+    <h1>Goroda game</h1>
+    <div id="game-info">
+        <div>Впишите или назовите город на букву «<span id="last-letter">А</span>»</div>
+    </div>
+    <div class="user-input-form" action="game()">
+        <input id="user-city-input" type="text" placeholder="gorod">
+        <button id="use-voice">Use voice</button>
+        <button id="submit">Submit</button>
+        <button id="fail">Fail</button>
+    </div>
+    <div id="output">
+    </div>
+</div>
+<div id="YMapsID" style="width: 450px; height: 350px;"></div>
+<script type="text/javascript" src="cities.json"></script>
+<!---->
+<script type="text/javascript" src="app.js"></script>
+<!--
+<script type="text/javascript" src="script.js"></script>-->
+</body>
+</html>
