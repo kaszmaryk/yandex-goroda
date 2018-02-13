@@ -86,7 +86,7 @@ function gameStep(cityName = null, isUser = true) {
     )
     .then(
         function(){
-            usedCities.push(cityName);
+            usedCities.push(cityName.toLowerCase());
             lastLetter = getLastLetter(cityName);
             addAnswer(cityName, cityAddress, isUser);
             if(isUser) {
