@@ -1,9 +1,12 @@
 //game variables
 let usedCities = [];
+let userCities = [];
+let computerCities = [];
 let lastLetter = 'а';
 let gameIsOn = true;
 let userCity = "";
 let cityAddress = "";
+let isUserWin = false;
 
 //Game messages
 let finalWord = "Сдаюсь!";
@@ -42,6 +45,8 @@ function game() {
 function gameStep(cityName = null, isUser = true) {
     if(!isUser && !haveResponse(lastLetter)) {
         alern(finalWord);
+        isUserWin = true;
+        loose();
         return false;
     } else if(!isUser && haveResponse(lastLetter)) {
         cityName = getAnswer(lastLetter);
@@ -90,9 +95,11 @@ function gameStep(cityName = null, isUser = true) {
             lastLetter = getLastLetter(cityName);
             addAnswer(cityName, cityAddress, isUser);
             if(isUser) {
+                userCities.push(formatCityName(cityName));
                 gameStep(null,false);
             } else {
-                updateLastLetterElem(lastLetter);
+                computerCities.push(cityName);
+                updateLastLetterElem(formatCityName(lastLetter));
             }
         }
     );
@@ -198,7 +205,7 @@ function isCityUsed(city) {
  * @param {string} city - cityname
  * @param {string} player - player name * 
  * **/
-function addAnswer(city, address, player){
+function addAnswer(city, address, player, block = output){
     let answerBlock = document.createElement('div');    
     let cityBlock = document.createElement('p');
     let addressBlock = document.createElement('p');
@@ -209,7 +216,7 @@ function addAnswer(city, address, player){
     addressBlock.innerHTML = address;
     answerBlock.appendChild(cityBlock);
     answerBlock.appendChild(addressBlock);
-    output.insertBefore(answerBlock, output.firstChild);
+    block.insertBefore(answerBlock, block.firstChild);
 }
 
 /**
@@ -265,7 +272,7 @@ function getCityNameByVoice(){
         gameStep(cityName, true);
     }
 
-    recognition.onspeechend = function() {
+    /*recognition.onspeechend = function() {
         recognition.stop();
       }
       
@@ -275,7 +282,7 @@ function getCityNameByVoice(){
     
     recognition.onerror = function(event) {
         diagnostic.textContent = 'Error occurred in recognition: ' + event.error;
-    }
+    }*/
 }
 
 /**
@@ -287,6 +294,38 @@ function loose() {
     userCityInput.disabled = true;
     useVoiceButton.disabled = true;
     submitButton.disabled = true;
+    showSummary(isUserWin);
+}
+
+/**
+ * Function shows summary of game
+ * 
+*/
+function showSummary(isUserWin) {
+    let winner = isUserWin ? "Вы выиграли!" : "Выиграл компьютер";
+    let summary = document.querySelector("#summary");
+    let winnerBlock = document.querySelector("#winner");
+    let playerSumBlock = document.querySelector("#player-cities .sum");
+    let computerSumBlock = document.querySelector("#computer-cities .sum");
+    let playerCitiesList = document.querySelector("#player-cities .cities");
+    let computerCitiesList = document.querySelector("#computer-cities .cities");
+
+    let gamesSection = document.querySelector(".games-section");
+    let yMapsID = document.querySelector("#YMapsID");
+
+    gamesSection.setAttribute("style", "display: none;")
+    yMapsID.setAttribute("style", "display: none;");
+
+    winnerBlock.innerHTML = winner;
+    playerSumBlock.innerHTML = "Города, названные вами: <br><span>" + userCities.length + "</span>";
+    computerSumBlock.innerHTML = "Города, названные компьютером: <br><span>" + computerCities.length + "</span>";
+    userCities.forEach(function(city){
+        addAnswer(city, null, true, playerCitiesList);
+    });
+    computerCities.forEach(function(city){
+        addAnswer(city, null, false, computerCitiesList);
+    });
+    summary.setAttribute("style", "display: flex;");
 }
 
 //game();

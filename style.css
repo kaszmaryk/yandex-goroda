@@ -8,20 +8,70 @@ body {
     flex-direction: row;
 }
 #YMapsID {
-    width: 80% !important;
+    width: 71.5% !important;
     height: 100vh !important;
 }
 .games-section {
-    width: 20%;
+    width: 28.5%;
     padding: 10px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
-.games-section h1 {
-    font-size: 1.35em;
+.games-section h1,
+#summary h1 {
+    font-size: 30px;
+    font-family: "Montserrat";
+    color: rgb( 49, 39, 131 );
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.2em;
     text-align: center;
 }
+
+#game-info {
+    font-size: 18px;
+    font-family: "Montserrat";
+    color: rgb( 49, 39, 131 );
+    line-height: 1.5;
+    text-align: center;
+}
+
+#game-info span {
+    font-size: 36px;
+}
+
+.input-with-voice {
+    width: 100%;
+    padding-right: 15px;
+    position: relative;
+}
+
+.use-voice-label {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    background-color: #3c2c82;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    align-items: center;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.fa {
+    font-family: FontAwesome;
+}
+
+#use-voice {
+    display: none;
+}  
+  
 
 .user-input-form {
     width: 100%;
@@ -32,11 +82,35 @@ body {
     flex-wrap: wrap;
     justify-content: flex-end;
 }
+
+.user-input-form button {
+    background-color: rgb(135, 132, 146);
+    font-size: 18px;
+    font-family: "Montserrat";
+    color: white;
+    padding: 10px;
+    border: none; 
+    cursor: pointer;    
+}
+
+.user-input-form button:hover {
+    background-color: rgb(79, 63, 139);
+    transition: 1s;
+}
+
+#submit {
+    background-color: rgb( 49, 39, 131 );    
+}
+  
+#submit:hover {
+    background-color: springgreen;
+}
+  
+
 #user-city-input {
     width: 100%;
-    font-size: 1.2em;
+    font-size: 24px;
     padding: 5px;
-
 }
 
 #game-info {
@@ -46,7 +120,7 @@ body {
 #output {
     display: flex;
     flex-direction: column;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: scroll;
 }
 
@@ -57,27 +131,71 @@ body {
 .answer-user p, .answer-computer p {
     margin: 0;
     margin-bottom: 5px;
+    font-size: 24px;
+    font-family: "Montserrat";
+    color: rgb( 0, 0, 0 );
 }
 
-.address-line {
-    font-size: 0.8em;
+p.address-line {
+    font-size: 14px;
     font-style: italic;
 }
 
 .answer-user {
-    border-left: 5px solid orange;
+    border-left: 10px solid rgb( 243, 146, 0 );
 }
 
 .answer-computer {
-    border-left: 5px solid blue;
+    border-left: 10px solid rgb( 49, 39, 131 );
 }
+  
+  
+
+#summary {
+    display: none;
+    background-color: white;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+#summary h2 {
+    text-align: center;
+    width: 100%;
+}
+
+#summary .cities {
+    max-height: 400px;
+}
+
+#winner {
+    font-size: 30px;
+    font-family: "Montserrat";
+    color: rgb( 49, 39, 131 );
+    text-align: center;
+}
+
+.cities .sum {
+    font-size: 18px;
+    font-family: "Montserrat";
+    color: rgb( 49, 39, 131 );
+    text-align: center;
+    line-height: 1.2;
+}
+
+.cities .sum span {
+    font-size: 24px;
+}
+
+
 
 @media screen and (max-width: 1024px) {
     .games-section {
         width: 40%;
     }
     #YMapsID {
-        width: 60%;
+        width: 60% !important;
     }
 }
 
@@ -90,8 +208,8 @@ body {
         width: 100%;
         height: 40vh;
     }
-    #YMapsId {
-        width: 100%;
+    #YMapsID {
+        width: 100% !important;
         height: 60vh;
     }
 }
